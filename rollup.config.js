@@ -15,7 +15,7 @@ export default {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: "public/build/bundle.js"
+    file: "public/build/bundle.js",
   },
   plugins: [
     svelte({
@@ -23,10 +23,10 @@ export default {
       dev: !production,
       // we'll extract any component CSS out into
       // a separate file - better for performance
-      css: css => {
-        css.write("public/build/bundle.css");
+      css: (css) => {
+        css.write("bundle.css");
       },
-      preprocess: sveltePreprocess({ postcss: true })
+      preprocess: sveltePreprocess({ postcss: true }),
     }),
     typescript({ typescript: typescriptCompiler }),
 
@@ -37,7 +37,7 @@ export default {
     // https://github.com/rollup/plugins/tree/master/packages/commonjs
     resolve({
       browser: true,
-      dedupe: ["svelte"]
+      dedupe: ["svelte"],
     }),
     commonjs(),
 
@@ -51,11 +51,11 @@ export default {
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    production && terser()
+    production && terser(),
   ],
   watch: {
-    clearScreen: false
-  }
+    clearScreen: false,
+  },
 };
 
 function serve() {
@@ -68,9 +68,9 @@ function serve() {
 
         require("child_process").spawn("npm", ["run", "start", "--", "--dev"], {
           stdio: ["ignore", "inherit", "inherit"],
-          shell: true
+          shell: true,
         });
       }
-    }
+    },
   };
 }

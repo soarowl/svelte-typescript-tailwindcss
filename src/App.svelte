@@ -4,11 +4,10 @@
 </script>
 
 <style>
-
 </style>
 
 <Tailwindcss />
 
-<main id="app" class="mx-auto">
+<main id="app" class="mx-auto bg-gray-300">
   <Hello name="Rick" />
 </main>
